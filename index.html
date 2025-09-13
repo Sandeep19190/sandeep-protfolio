@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chintha Sandeep - Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0F0F2B; /* Deep Blue */
+            color: #E2E8F0; /* White/Light Gray */
+        }
+        .bg-primary {
+            background-color: #0F0F2B; /* Deep Blue */
+        }
+        .text-primary {
+            color: #E2E8F0; /* White/Light Gray */
+        }
+        .bg-secondary {
+            background-color: #4B0082; /* Royal Purple */
+        }
+        .text-secondary {
+            color: #4B0082; /* Royal Purple */
+        }
+        .text-gold {
+            color: #FFD700; /* Gold */
+        }
+        .border-gold {
+            border-color: #FFD700; /* Gold */
+        }
+        .shadow-soft {
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+        }
+        .shadow-lg-soft {
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2), 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .card {
+            background-color: #1A1A3A;
+            border-radius: 1rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+        .hover-transition {
+            transition: all 0.3s ease;
+        }
+        .hover-transition:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            color: #FFD700;
+        }
+        .skill-bar-container {
+            background-color: #3730A3;
+            border-radius: 9999px;
+            overflow: hidden;
+        }
+        .skill-bar {
+            background-color: #FFD700;
+            height: 10px;
+            border-radius: 9999px;
+            transition: width 1s ease-in-out;
+        }
+        .timeline-item {
+            position: relative;
+            padding-left: 1.5rem;
+            border-left: 2px solid #4B0082;
+            margin-left: 1rem;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -8px;
+            width: 16px;
+            height: 16px;
+            background-color: #FFD700;
+            border: 2px solid #4B0082;
+            border-radius: 50%;
+        }
+        .skill-icon {
+            font-size: 2.5rem;
+            color: #FFD700;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body class="bg-primary text-primary">
+
+    <!-- Navigation Bar -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-primary bg-opacity-90 backdrop-blur-sm shadow-lg-soft px-8 py-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="#" class="text-3xl font-bold text-gold hover-transition">Sandeep</a>
+            <div class="hidden md:flex space-x-8">
+                <a href="#home" class="text-xl font-medium text-primary hover-transition hover:text-gold">Home</a>
+                <a href="#about" class="text-xl font-medium text-primary hover-transition hover:text-gold">About</a>
+                <a href="#skills" class="text-xl font-medium text-primary hover-transition hover:text-gold">Skills</a>
+                <a href="#projects" class="text-xl font-medium text-primary hover-transition hover:text-gold">Projects</a>
+                <a href="#experience" class="text-xl font-medium text-primary hover-transition hover:text-gold">Experience</a>
+                <a href="#education" class="text-xl font-medium text-primary hover-transition hover:text-gold">Education</a>
+                <a href="#contact" class="text-xl font-medium text-primary hover-transition hover:text-gold">Contact</a>
+            </div>
+            <button id="menu-toggle" class="md:hidden text-primary focus:outline-none">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden fixed top-0 left-0 w-full h-full bg-primary z-40 flex-col items-center justify-center space-y-8 text-3xl font-bold">
+        <button id="close-menu" class="absolute top-8 right-8 text-primary focus:outline-none">
+            <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+        </button>
+        <a href="#home" class="hover-transition text-gold" onclick="closeMenu()">Home</a>
+        <a href="#about" class="hover-transition" onclick="closeMenu()">About</a>
+        <a href="#skills" class="hover-transition" onclick="closeMenu()">Skills</a>
+        <a href="#projects" class="hover-transition" onclick="closeMenu()">Projects</a>
+        <a href="#experience" class="hover-transition" onclick="closeMenu()">Experience</a>
+        <a href="#education" class="hover-transition" onclick="closeMenu()">Education</a>
+        <a href="#contact" class="hover-transition" onclick="closeMenu()">Contact</a>
+    </div>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-8 py-24 md:py-32">
+
+        <!-- Home Section -->
+        <section id="home" class="min-h-screen flex items-center justify-center text-center pt-24">
+            <div class="flex flex-col items-center">
+                <div class="w-48 h-48 rounded-full overflow-hidden mb-6 shadow-lg-soft border-4 border-gold">
+                    <img src="https://placehold.co/192x192/4B0082/FFFFFF?text=CS" alt="Sandeep's professional photo" class="object-cover w-full h-full">
+                </div>
+                <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold text-gold mb-4">Chintha Sandeep</h1>
+                <p class="text-xl sm:text-2xl font-medium text-primary mb-6">BTech Student | Aspiring Software Developer | AI Enthusiast</p>
+                <p class="max-w-xl text-lg mb-8">Crafting innovative solutions and building the future, one line of code at a time.</p>
+                <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                    <a href="#contact" class="bg-gold text-primary font-bold py-3 px-8 rounded-full shadow-md hover-transition">Hire Me</a>
+                    <a href="E:\my certificates\ChinthaSandeep_Resume1.pdf" download class="bg-secondary text-primary font-bold py-3 px-8 rounded-full shadow-md border-2 border-gold hover-transition">Download Resume</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Me Section -->
+        <section id="about" class="py-24 md:py-32">
+            <h2 class="text-4xl font-bold text-center text-gold mb-16">About Me</h2>
+            <div class="card p-8 shadow-lg-soft max-w-4xl mx-auto">
+                <h3 class="text-3xl font-bold mb-4">Who I Am</h3>
+                <p class="text-lg mb-6 leading-relaxed">
+                    I am Chintha Sandeep, a dedicated B.Tech student specializing in Computer Science with a focus on Artificial Intelligence and Machine Learning from St Mary's Group Of Institutions in Hyderabad. I have a passion for creating impactful software and am always eager to expand my knowledge in new technologies. I am a quick learner and thrive on solving complex problems.
+                </p>
+                <h3 class="text-3xl font-bold mb-4">What I'm Looking For</h3>
+                <p class="text-lg leading-relaxed">
+                    I am actively seeking an opportunities to apply my skills in a professional setting and contribute to innovative projects. My goal is to secure a full-time role after graduation where I can grow as a software developer and make a significant impact.
+                </p>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="py-24 md:py-32">
+            <h2 class="text-4xl font-bold text-center text-gold mb-16">Skills</h2>
+            <div class="grid lg:grid-cols-2 gap-12">
+                <!-- Technical Skills -->
+                <div class="card p-8 shadow-lg-soft">
+                    <h3 class="text-3xl font-bold mb-6 text-gold">Technical Skills</h3>
+                    <div class="grid sm:grid-cols-2 gap-6 text-center">
+                        <div class="flex flex-col items-center">
+                            <i class="fab fa-python skill-icon"></i>
+                            <span class="mt-2 text-lg font-medium">Python</span>
+                        </div>
+                        <div class="flex flex-col items-center">
+                            <i class="fab fa-html5 skill-icon"></i>
+                            <span class="mt-2 text-lg font-medium">HTML/CSS</span>
+                        </div>
+                        <div class="flex flex-col items-center">
+                            <i class="fab fa-js-square skill-icon"></i>
+                            <span class="mt-2 text-lg font-medium">JavaScript</span>
+                        </div>
+                        <div class="flex flex-col items-center">
+                            <i class="fas fa-file-powerpoint skill-icon"></i>
+                            <span class="mt-2 text-lg font-medium">MS-PowerPoint</span>
+                        </div>
+                        <div class="flex flex-col items-center">
+                            <i class="fas fa-file-excel skill-icon"></i>
+                            <span class="mt-2 text-lg font-medium">MS-Excel</span>
+                        </div>
+                        <div class="flex flex-col items-center">
+                            <i class="fas fa-chart-bar skill-icon"></i>
+                            <span class="mt-2 text-lg font-medium">Power BI</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Soft Skills -->
+                <div class="card p-8 shadow-lg-soft">
+                    <h3 class="text-3xl font-bold mb-6 text-gold">Soft Skills</h3>
+                    <div class="flex flex-wrap gap-4">
+                        <span class="bg-secondary rounded-full px-4 py-2 text-primary font-medium hover-transition">Good Communication</span>
+                        <span class="bg-secondary rounded-full px-4 py-2 text-primary font-medium hover-transition">Teamwork</span>
+                        <span class="bg-secondary rounded-full px-4 py-2 text-primary font-medium hover-transition">Hard Working</span>
+                        <span class="bg-secondary rounded-full px-4 py-2 text-primary font-medium hover-transition">Problem-Solving</span>
+                        <span class="bg-secondary rounded-full px-4 py-2 text-primary font-medium hover-transition">Adaptability</span>
+                        <span class="bg-secondary rounded-full px-4 py-2 text-primary font-medium hover-transition">Quick Learning</span>
+                        <span class="bg-secondary rounded-full px-4 py-2 text-primary font-medium hover-transition">Positive Thinking</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="py-24 md:py-32">
+            <h2 class="text-4xl font-bold text-center text-gold mb-16">My Projects</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="card p-6 shadow-lg-soft">
+                    <img src="https://placehold.co/600x400/4B0082/FFFFFF?text=Portfolio+Project" alt="Portfolio Project" class="rounded-lg mb-4">
+                    <h3 class="text-2xl font-bold text-gold mb-2">Portfolio Website</h3>
+                    <p class="text-lg text-primary mb-4">A professional portfolio showcasing my skills in Full Stack Development and Advanced Python, detailing my academic background, technical expertise, internship experience, and a collection of key personal projects.</p>
+                    <p class="text-sm text-gray-400 mb-4">Technologies: HTML, CSS, JavaScript</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gold hover:underline">GitHub</a>
+                    </div>
+                </div>
+                <!-- Project 2 -->
+                <div class="card p-6 shadow-lg-soft">
+                    <img src="https://placehold.co/600x400/4B0082/FFFFFF?text=Food+Delivery+App" alt="Food Delivery App Interface" class="rounded-lg mb-4">
+                    <h3 class="text-2xl font-bold text-gold mb-2">Food Delivery App Interface</h3>
+                    <p class="text-lg text-primary mb-4">Designed an intuitive food delivery interface using HTML/CSS, focusing on a streamlined and efficient ordering experience for users.</p>
+                    <p class="text-sm text-gray-400 mb-4">Technologies: HTML, CSS</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gold hover:underline">GitHub</a>
+                    </div>
+                </div>
+                <!-- Project 3 -->
+                <div class="card p-6 shadow-lg-soft">
+                    <img src="https://placehold.co/600x400/4B0082/FFFFFF?text=YouTube+Clone" alt="YouTube Clone Interface" class="rounded-lg mb-4">
+                    <h3 class="text-2xl font-bold text-gold mb-2">YouTube Clone Interface</h3>
+                    <p class="text-lg text-primary mb-4">Built a pixel-perfect, responsive YouTube clone using HTML and CSS. This project showcases front-end skills and ability to replicate complex, real-world user interfaces with keen attention to detail.</p>
+                    <p class="text-sm text-gray-400 mb-4">Technologies: HTML, CSS</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gold hover:underline">GitHub</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience & Certifications Section -->
+        <section id="experience" class="py-24 md:py-32">
+            <h2 class="text-4xl font-bold text-center text-gold mb-16">Experience & Certifications</h2>
+            <div class="grid md:grid-cols-2 gap-12">
+                <!-- Internships -->
+                <div class="card p-8 shadow-lg-soft">
+                    <h3 class="text-3xl font-bold text-gold mb-8">Internships</h3>
+                    <div class="timeline-item pb-12">
+                        <h4 class="text-xl font-bold mb-1">Full Stack Development Internship</h4>
+                        <p class="text-lg font-medium text-gray-400 mb-2">Mindsparc Innovations | Jul 2024 - Oct 2024</p>
+                        <ul class="list-disc list-inside space-y-2">
+                            <li>Developed full-stack web applications with front-end (HTML, CSS, JavaScript) and back-end (Python, Node.js, or others) technologies.</li>
+                            <li>Designed and implemented databases to save and fetch application data effectively.</li>
+                        </ul>
+                    </div>
+                    <div class="timeline-item pb-12">
+                        <h4 class="text-xl font-bold mb-1">Advanced Python Developer Internship</h4>
+                        <p class="text-lg font-medium text-gray-400 mb-2">Mindsparc | Jul 2024 - Oct 2024</p>
+                        <ul class="list-disc list-inside space-y-2">
+                            <li>Designed and tested Python-based applications using advanced concepts like file handling, OOPs, and modules.</li>
+                            <li>Implemented real-time projects to implement Python knowledge to solve real-world problems.</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Certifications & Awards -->
+                <div class="card p-8 shadow-lg-soft">
+                    <h3 class="text-3xl font-bold text-gold mb-8">Certifications & Awards</h3>
+                    <div class="timeline-item pb-12">
+                        <h4 class="text-xl font-bold mb-1">Certifications</h4>
+                        <ul class="list-disc list-inside space-y-2">
+                            <li>FULL STACK WEB DEVELOPMENT</li>
+                            <li>ADVANCED PYTHON PROGRAMMING</li>
+                            <li>NPTEL Certifications</li>
+                        </ul>
+                    </div>
+                    <div class="timeline-item pb-12">
+                        <h4 class="text-xl font-bold mb-1">Awards & Hackathons</h4>
+                        <ul class="list-disc list-inside space-y-2">
+                            <li>Games</li>
+                            <li>Hackathons</li>
+                            <li>Leadership roles</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education Section -->
+        <section id="education" class="py-24 md:py-32">
+            <h2 class="text-4xl font-bold text-center text-gold mb-16">Education</h2>
+            <div class="grid lg:grid-cols-3 gap-12">
+                <div class="card p-8 shadow-lg-soft">
+                    <h4 class="text-xl font-bold mb-1">B.Tech, CSE-AIML</h4>
+                    <p class="text-lg font-medium text-gray-400 mb-2">St Mary's Group Of Institutions Hyderabad | 2022-2026</p>
+                     <p class="text-sm text-gray-400">GPA: 7.04</p>
+                </div>
+                <div class="card p-8 shadow-lg-soft">
+                    <h4 class="text-xl font-bold mb-1">Senior Secondary (XII)</h4>
+                    <p class="text-lg font-medium text-gray-400 mb-2">Boys Kandhukur | 2022</p>
+                    <p class="text-sm text-gray-400">Percentage: 82.30%</p>
+                </div>
+                <div class="card p-8 shadow-lg-soft">
+                    <h4 class="text-xl font-bold mb-1">Secondary (X)</h4>
+                    <p class="text-lg font-medium text-gray-400 mb-2">T.S.W.R Boys School | 2020</p>
+                    <p class="text-sm text-gray-400">CGPA: 9.70/10</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-24 md:py-32">
+            <h2 class="text-4xl font-bold text-center text-gold mb-16">Get in Touch</h2>
+            <div class="flex flex-col md:flex-row gap-12 justify-center">
+                <!-- Contact Form -->
+                <div class="card p-8 shadow-lg-soft md:w-1/2">
+                    <h3 class="text-3xl font-bold mb-6 text-gold">Contact Form</h3>
+                    <form>
+                        <div class="mb-6">
+                            <label for="name" class="block text-lg font-medium mb-2">Name</label>
+                            <input type="text" id="name" name="name" class="w-full bg-primary border border-secondary rounded-lg px-4 py-2 focus:outline-none focus:border-gold transition duration-300">
+                        </div>
+                        <div class="mb-6">
+                            <label for="email" class="block text-lg font-medium mb-2">Email</label>
+                            <input type="email" id="email" name="email" class="w-full bg-primary border border-secondary rounded-lg px-4 py-2 focus:outline-none focus:border-gold transition duration-300">
+                        </div>
+                        <div class="mb-6">
+                            <label for="message" class="block text-lg font-medium mb-2">Message</label>
+                            <textarea id="message" name="message" rows="4" class="w-full bg-primary border border-secondary rounded-lg px-4 py-2 focus:outline-none focus:border-gold transition duration-300"></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-gold text-primary font-bold py-3 px-8 rounded-full shadow-md hover-transition">Send Message</button>
+                    </form>
+                </div>
+                <!-- Social Links -->
+                <div class="card p-8 shadow-lg-soft md:w-1/3">
+                    <h3 class="text-3xl font-bold mb-6 text-gold">Find Me On</h3>
+                    <div class="space-y-4 text-lg">
+                        <p class="flex items-center space-x-3">
+                            <i class="fas fa-envelope text-gold text-3xl"></i>
+                            <a href="sandeepchintha00@gmail.com" class="hover-transition text-xl">sandeepchintha00@gmail.com</a>
+                        </p>
+                        <p class="flex items-center space-x-3">
+                            <i class="fas fa-phone text-gold text-3xl"></i>
+                            <span class="text-xl">+918499849858</span>
+                        </p>
+                        <p class="flex items-center space-x-3">
+                            <i class="fab fa-linkedin text-gold text-3xl"></i>
+                            <a href="https://www.linkedin.com/in/chintha-sandeep-15491a303?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BeqScvTFaTuSf%2BvZ34pxHgw%3D%3D" class="hover-transition text-xl">LinkedIn</a>
+                        </p>
+                        <p class="flex items-center space-x-3">
+                            <i class="fab fa-github text-gold text-3xl"></i>
+                            <a href="http://sandeep19190.github.io/sandeep./" class="hover-transition text-xl">GitHub</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const closeMenuBtn = document.getElementById('close-menu');
+
+        function openMenu() {
+            mobileMenu.classList.remove('hidden');
+        }
+
+        function closeMenu() {
+            mobileMenu.classList.add('hidden');
+        }
+
+        menuToggle.addEventListener('click', openMenu);
+        closeMenuBtn.addEventListener('click', closeMenu);
+
+        // Close mobile menu when clicking outside
+        window.addEventListener('click', function(e) {
+            if (!mobileMenu.contains(e.target) && !menuToggle.contains(e.target) && !mobileMenu.classList.contains('hidden')) {
+                closeMenu();
+            }
+        });
+
+    </script>
+</body>
+</html>
